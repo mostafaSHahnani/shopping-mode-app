@@ -1,24 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import "bootstrap/dist/css/bootstrap.css";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import "./App.css";
+import Main from "./Components/Main/Main";
+import Home from "./Page/Home";
+import MainSectionWomen from "./Components/MainSectionWomen/Index";
+import MainSectionAccessories from "./Components/Accessories/Index";
+import MainSectionoOther from "./Components/MainOther/Index";
+import MainSectionShoes from "./Components/MainShoes/Index";
+import Login from "./Page/Login";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter className="App">
+      <Routes>
+        <Route path="/" element={<Home />}>
+          <Route path="/" element={<Main />} />
+          <Route path="women" element={<MainSectionWomen />} />
+          <Route path="accessories" element={<MainSectionAccessories />} />
+          <Route path="watch" element={<MainSectionoOther />} />
+          <Route path="shoes" element={<MainSectionShoes />} />
+        </Route>
+        <Route path="login" element={<Login />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
